@@ -15,7 +15,7 @@ app.route('/notes')
   .get(note.getNotes)
 
 app.route('/notes/:id')
-  .get(note.getNote)
+  .get(note.getNoteById)
 
 
 let port = process.env.PORT || 8080;
