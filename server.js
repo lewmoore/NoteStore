@@ -14,6 +14,9 @@ app.route('/note')
   .post(note.postNote)
   .get(note.getNotes)
 
+app.route('/note/:id')
+  .get(note.getNote)
+
 
 let port = process.env.PORT || 8080;
 app.listen(port)

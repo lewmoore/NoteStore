@@ -20,4 +20,12 @@ function getNotes(req, res){
   })
 }
 
-module.exports = { postNote, getNotes }
+function getNote(req, res){
+  Note.findById(req.params.id, function(err, note) {
+    if (err) res.send(err)
+
+    res.json(note)
+  })
+}
+
+module.exports = { postNote, getNotes, getNote }
