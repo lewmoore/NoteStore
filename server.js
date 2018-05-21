@@ -10,11 +10,11 @@ mongoose.connect("mongodb://localhost:27017/notes")
 
 let router = express.Router();
 
-app.route('/note')
+app.route('/notes')
   .post(note.postNote)
   .get(note.getNotes)
 
-app.route('/note/:id')
+app.route('/notes/:id')
   .get(note.getNote)
 
 

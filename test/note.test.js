@@ -13,7 +13,7 @@ describe('note/POST', function(){
     text: 'This is my first note'
     }
     chai.request(server)
-    .post('/note')
+    .post('/notes')
     .send(note)
     .end(function(err, res) {
       res.should.have.status(200)
@@ -26,7 +26,7 @@ describe('note/POST', function(){
 describe('note/GET', function(){
   it('should get all notes', function(done){
     chai.request(server)
-    .get('/note')
+    .get('/notes')
     .end(function(err, res) {
       expect(res.status).to.equal(200)
       res.body.should.be.a('array')
@@ -39,7 +39,7 @@ describe('note/GET', function(){
       text: 'Yet another note..'
     })
     chai.request(server)
-    .get('/note/' + note.id)
+    .get('/notes/' + note.id)
     .send(note)
     .end(function(err, res) {
       res.should.have.status(200)
