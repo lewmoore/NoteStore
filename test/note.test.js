@@ -7,7 +7,7 @@ let expect = chai.expect
 chai.use(chaiHttp)
 
 describe('note/POST', function(){
-  it('should post a note', function(){
+  it('should post a note', function(done){
     let note = {
     text: 'This is my first note'
     }
@@ -17,17 +17,19 @@ describe('note/POST', function(){
     .end(function(err, res) {
       res.should.have.status(200)
       expect(res.body.note.text).to.equal('This is my first note')
+      done()
     })
   })
 })
 
 describe('note/GET', function(){
-  it('should get all notes', function(){
+  it('should get all notes', function(done){
     chai.request(server)
     .get('/note')
     .end(function(err, res) {
       expect(res.status).to.equal(200)
       res.body.should.be.a('array')
+      done()
     })
   })
 })
