@@ -12,6 +12,7 @@ let router = express.Router();
 
 app.route('/note')
   .post(note.postNote)
+  .get(note.getNotes)
 
 
 let port = process.env.PORT || 8080;
