@@ -52,7 +52,7 @@ describe('note/GET', function(){
 })
 
 describe('note/DELETE', function(){
-  it('should delete a note', function(){
+  it('should delete a note', function(done){
     let note = new Note({
       text: 'This note will be deleted'
     })
@@ -61,6 +61,7 @@ describe('note/DELETE', function(){
     .end(function(err, res) {
       res.should.have.status(200)
       expect(res.body.message).to.equal('Note deleted successfully')
+      done()
     })
   })
 })
