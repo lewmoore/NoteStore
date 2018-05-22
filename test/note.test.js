@@ -34,7 +34,7 @@ describe('note/GET', function(){
     })
   })
 
-  it('should get a single note', function(){
+  it('should get a single note by id', function(){
     let note = new Note({
       text: 'Yet another note..'
     })
