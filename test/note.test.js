@@ -18,8 +18,8 @@ describe('note/POST', function(){
     .end(function(err, res) {
       res.should.have.status(200)
       expect(res.body.note.text).to.equal('This is my first note')
-      done()
     })
+    done()
   })
 })
 
@@ -30,8 +30,8 @@ describe('note/GET', function(){
     .end(function(err, res) {
       expect(res.status).to.equal(200)
       res.body.should.be.a('array')
-      done()
     })
+    done()
   })
 
   it('should get a single note by id', function(done){
