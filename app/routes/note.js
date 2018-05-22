@@ -21,7 +21,6 @@ function getNotes(req, res){
 }
 
 function getNoteById(req, res){
-  console.log(req.body.text)
   Note.findById(req.params.id, function(err, note) {
     if (err) res.send(err)
 
@@ -29,4 +28,12 @@ function getNoteById(req, res){
   })
 }
 
-module.exports = { postNote, getNotes, getNoteById }
+function deleteNote(req, res){
+  Note.remove({_id: req.params.id}, function(err, note){
+    if (err) res.send(err)
+
+    res.json({ message: "Note deleted successfully"})
+  })
+}
+
+module.exports = { postNote, getNotes, getNoteById, deleteNote }

@@ -16,6 +16,7 @@ app.route('/notes')
 
 app.route('/notes/:id')
   .get(note.getNoteById)
+  .delete(note.deleteNote)
 
 
 let port = process.env.PORT || 8080;

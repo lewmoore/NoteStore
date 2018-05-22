@@ -34,16 +34,33 @@ describe('note/GET', function(){
     })
   })
 
-  it('should get a single note by id', function(){
+  it('should get a single note by id', function(done){
     let note = new Note({
       text: 'Yet another note..'
     })
+    note.save(function(err, note){
+      chai.request(server)
+      .get('/notes/' + note.id)
+      .send(note)
+      .end(function(err, res) {
+        res.should.have.status(200)
+        expect(res.body._id).to.equal(note.id)
+        done()
+      })
+    })
+  })
+})
+
+describe('note/DELETE', function(){
+  it('should delete a note', function(){
+    let note = new Note({
+      text: 'This note will be deleted'
+    })
     chai.request(server)
-    .get('/notes/' + note.id)
-    .send(note)
+    .delete('/notes/' + note.id)
     .end(function(err, res) {
       res.should.have.status(200)
-      expect(res.body._id).to.equal(note.id)
+      expect(res.body.message).to.equal('Note deleted successfully')
     })
   })
 })
